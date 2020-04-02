@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1 style="text-align: center">Rails Yelp MVP</h1>
+
+  <hr>
+  <br>
+    <h2>Restaurants</h2>
+    <p style="text-align: right"><%= link_to 'Add a new restaurant', new_restaurant_path %></p>
+  <br>
+
+  <% @restaurants.each do |restaurant| %>
+  <div class="d-flex justify-content-between">
+    <div>
+      <h3><%= link_to restaurant.name, restaurant_path(restaurant.id) %> (<%= restaurant.category.capitalize %>)</h3>
+      <p><%= restaurant.address %></p>
+      <p>Phone: <%= restaurant.phone_number %></p>
+      <hr>
+    </div>
+    <div>
+      <p><%= link_to 'Edit', edit_restaurant_path(restaurant.id) %></p>
+      <p><%= link_to 'Delete', method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></p>
+    </div>
+  </div>
+
+  <% end %>
+</div>
